@@ -3,3 +3,44 @@ body{
     height: 100%;
     width:100%
 }
+
+.bw_logo img{
+    height: 90px;
+    width: 90px;
+    float: left;
+}
+.bw_title{
+    margin-left: 2%;
+    justify-self: center;
+    float: left;
+}
+
+.bw_search{
+    float: right;
+    margin-block-start: 2em;
+    margin-block-end: 2em;
+    margin-inline-start: 2em;
+    margin-inline-end: 2em;
+}
+
+.bw_search input{
+    height:25px;
+    border-radius: 5px;
+}
+
+.bw_search button{
+    height:32px;
+    border-radius: 5px;
+    width:100px;
+}
+
+.bw_footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    font-size: 30px;
+    color: white;
+    text-align: center;
+    
+}

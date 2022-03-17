@@ -1,9 +1,12 @@
 import React from 'react'
+import Header from "../../component/Header"
+import Footer from "../../component/Footer"
 
 function HomePage() {
   return (
-    <div>
-      <h1>SFPOPOS</h1>
+    <div className='bw_pageContainer'>
+      <Header />
+      <Footer />
     </div>
   )
 }
