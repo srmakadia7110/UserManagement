@@ -3,10 +3,15 @@ import logo from "../../assets/images/logo.png"
 
 function Header() {
   return (
-    <div className='bw_header'>
+    <div className='container'>
+      <div className='row'>
+        <div className='col-4'>
         <div className='bw_logo'><img src={logo}/></div>
-        <div className='bw_title'><h1>Media Platform</h1></div>
-        <div className='bw_search'><button>Upload</button><button>Singin</button></div>
+        </div>
+        <div className='col-8'>
+        <div className='bw_title'><h1>User Management</h1></div>
+        </div>
+      </div>
     </div>
   )
 }

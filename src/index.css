@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.bw_logo img{
+    height: 90px;
+    width: 90px;
+    float: left;
+}
+.bw_footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    font-size: 30px;
+    text-align: center;
+    
+}
