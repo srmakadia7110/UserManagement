@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Header from "../../component/Header";
 import Footer from "../../component/Footer";
+import { Link } from "react-router-dom";
 import getUsers from "../../redux/actions/Login";
-import { Button, Checkbox, Form, Input, notification } from "antd";
+import { Button, Checkbox, Form, Input, notification, Row, Col } from "antd";
 
 const Login = (props) => {
   const dispatch = useDispatch();
@@ -20,15 +21,16 @@ const Login = (props) => {
       <Header />
       
     <div className='container'>
-      <div className="row">
-      <div className="col-6">
+      <div className="row form-wrap"> 
+      <div className="col-12 col-md-6 form">
       <Form
         name="basic"
-        labelCol={{ span: 8 }}
-        wrapperCol={{ span: 16 }}
         initialValues={{ remember: true }}
         onFinish={onFinish}
       >
+        
+         <Row>
+          <Col span={24}>
         <Form.Item
           label="Username"
           name="username"
@@ -40,8 +42,10 @@ const Login = (props) => {
           ]}
         >
           <Input />
-        </Form.Item>
-
+        </Form.Item></Col>
+</Row>
+           <Row>
+          <Col span={24}>
         <Form.Item
           label="Password"
           name="password"
@@ -54,12 +58,23 @@ const Login = (props) => {
         >
           <Input.Password />
         </Form.Item>
-
+        </Col>
+        </Row>
+           <Row>
+          <Col span={24}>
+            if you don't have account then <Link to="register">register now</Link>
+            </Col>
+          </Row>
+          
+           <Row>
+          <Col span={24}>
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
           <Button type="primary" htmlType="submit" loading={loginLoading}>
             Submit
           </Button>
         </Form.Item>
+        </Col>
+        </Row>
       </Form>
       </div>
       </div>

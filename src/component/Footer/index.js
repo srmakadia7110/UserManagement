@@ -2,8 +2,10 @@ import React from 'react'
 
 function Footer() {
   return (
-    <div className='bw_footer'>
-        <div className='bw_text'>Develop By Shreyash</div>
+    <div className='containr-fluid'>
+        <div className='row footer'>
+          <div className="col-12 ">Develop By Shreyash</div>
+        </div>
     </div>
   )
 }
