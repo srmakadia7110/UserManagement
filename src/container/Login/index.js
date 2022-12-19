@@ -9,13 +9,20 @@ import { Button, Checkbox, Form, Input, notification, Row, Col } from "antd";
 const Login = (props) => {
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
-  const { loginLoading } = useSelector((state) => {
+  const { loginLoading , loginData} = useSelector((state) => {
     return state.login;
   });
-
+  console.log(loginData)
   const onFinish = (values) => {
     dispatch(getUsers(values));
   };
+  useEffect(() => {
+    if(loginData && loginData.success == false){
+      notification["error"]({
+        message: loginData.message
+      });
+    }
+  },[loginData])
   return (
     <>
       <Header />
@@ -28,16 +35,22 @@ const Login = (props) => {
         initialValues={{ remember: true }}
         onFinish={onFinish}
       >
+      <Row className="pb-5">
+       <Col span={24}>
+        <h1>Login User</h1>
+        </Col>
+        
+        </Row>
         
          <Row>
           <Col span={24}>
         <Form.Item
-          label="Username"
-          name="username"
+          label="Email"
+          name="email"
           rules={[
             {
               required: true,
-              message: "Please input your username!",
+              message: "Please input your Email!",
             },
           ]}
         >
@@ -66,9 +79,9 @@ const Login = (props) => {
             </Col>
           </Row>
           
-           <Row>
+           <Row className="pt-3">
           <Col span={24}>
-        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+        <Form.Item>
           <Button type="primary" htmlType="submit" loading={loginLoading}>
             Submit
           </Button>

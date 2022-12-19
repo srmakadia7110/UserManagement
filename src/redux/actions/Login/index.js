@@ -8,18 +8,25 @@ const getUsers = (data) => async (dispatch) => {
   dispatch({
     type: AUTH_REQUEST,
   });
-  let url = `${process.env.REACT_APP_API_URL}platform/v1/user/token/`;
+  let url = `${process.env.REACT_APP_API_URL}login/`;
   try {
     const res = await axios.post(url, data);
-    localStorage.setItem("user", JSON.stringify(res.data.data));
-    localStorage.setItem("user-token", res.data.data.token);
-    Cookies.set("user", JSON.stringify(res.data.data));
-    Cookies.set("user-token", res.data.data.token);
-    dispatch({
-      type: AUTH_SUCCESSFUL,
-      payload: res.data,
-    });
-    history.push("/dashboard");
+    if(res.data.code == 200){
+      localStorage.setItem("user", JSON.stringify(res.data.data));
+      localStorage.setItem("user-id", res.data.data.ID);
+      Cookies.set("user", JSON.stringify(res.data.data));
+      Cookies.set("user-id", res.data.data.ID);
+      dispatch({
+        type: AUTH_SUCCESSFUL,
+        payload: res.data,
+      });
+      history.push("/users");
+    }else{
+      dispatch({
+        type: AUTH_FAILURE,
+        payload: res.data,
+      });
+    }
   } catch (err) {
     dispatch({
       type: AUTH_FAILURE,

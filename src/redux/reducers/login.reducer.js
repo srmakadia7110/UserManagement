@@ -32,7 +32,7 @@ export default function (state = initialState, action) {
         loginError: true,
         loginSuccess: false,
         loginLoading: false,
-        loginData: {},
+        loginData: action.payload,
       };
     default:
       return state;
