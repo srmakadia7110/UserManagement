@@ -29,3 +29,29 @@ code {
   padding: 50px;
   box-shadow: inset 0 -3em 3em rgb(0 0 0 / 10%), 0 0 0 2px rgb(255 255 255), 0.3em 0.3em 1em rgb(0 0 0 / 30%);
 }
+
+li.site-pagination-nav-li {
+  list-style-type: none;
+}
+
+li.site-pagination-nav-li {
+  float: left;
+  margin-right: 10px;
+  /* text-align: center; */
+  list-style-type: none;
+}
+
+li.site-pagination-nav-li a {
+  cursor: pointer;
+  border: 1px solid;
+  padding: 10px 15px;
+  background: #fff;
+  text-decoration: none;
+  color: #000;
+}
+
+nav.site-pagination-nav {
+  display: inline-block;
+  /* align-items: center; */
+  margin-top: 30px;
+}
