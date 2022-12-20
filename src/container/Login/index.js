@@ -4,10 +4,12 @@ import Header from "../../component/Header";
 import Footer from "../../component/Footer";
 import { Link } from "react-router-dom";
 import getUsers from "../../redux/actions/Login";
+import { useNavigate } from 'react-router-dom';
 import { Button, Checkbox, Form, Input, notification, Row, Col } from "antd";
 
 const Login = (props) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const { loginLoading , loginData} = useSelector((state) => {
     return state.login;
@@ -21,6 +23,9 @@ const Login = (props) => {
       notification["error"]({
         message: loginData.message
       });
+    }
+    if(loginData && loginData.success == true){
+      navigate('/users');
     }
   },[loginData])
   return (

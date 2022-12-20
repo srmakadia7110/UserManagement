@@ -20,7 +20,6 @@ const getUsers = (data) => async (dispatch) => {
         type: AUTH_SUCCESSFUL,
         payload: res.data,
       });
-      history.push("/users");
     }else{
       dispatch({
         type: AUTH_FAILURE,

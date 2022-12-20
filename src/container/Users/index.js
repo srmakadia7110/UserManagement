@@ -4,11 +4,16 @@ import Header from "../../component/Header";
 import Footer from "../../component/Footer";
 import getUserList from "../../redux/actions/Users";
 import { Button, Checkbox, Form, Input, notification, Row, Col,Table } from "antd";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 import PaginationComponent from "../../component/Pagination";
 
 const Users = (props) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  if(Cookies.get("user-id") == undefined){
+      navigate("/");
+  }
   const [page, setPage] = useState(1);
   const [size, setSize] = useState(2);
   const [search, setSearch] = useState("");
@@ -51,7 +56,6 @@ const Users = (props) => {
     dispatch(getUserList(page,size,search));
   },[page,search])
 
-  console.log(userListData);
   return (
     <>
     <Header />
@@ -61,7 +65,7 @@ const Users = (props) => {
         <div className="col-12 col-md-8 form">
             <h1 className="mb-5">User List</h1>
             <div className="">
-                <Input placeholder="Search User" onChange={(e) => setSearch(e.target.value)}/>
+                <Input placeholder="Search User" onChange={(e) => {setPage(1);setSearch(e.target.value)}}/>
             </div>
         {userListData && userListData.data && <Table dataSource={userListData.data} columns={columns} loading={userListLoading} pagination={false}/>}
         

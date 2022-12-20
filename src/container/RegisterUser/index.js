@@ -4,10 +4,12 @@ import Header from "../../component/Header";
 import Footer from "../../component/Footer";
 import regiterUser from "../../redux/actions/Registration";
 import { Button, Checkbox, Form, Input, notification, Row, Col } from "antd";
+import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
 
 const RegisterUser = (props) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const { registerError,
     registerSuccess,
@@ -26,9 +28,11 @@ const RegisterUser = (props) => {
         message: registerData.message
       });
     }
+    if(registerData && registerData.success == true){
+      navigate('/');
+    }
   },[registerData])
 
-  console.log(registerData);
   return (
     <>
     <Header />
